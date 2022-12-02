@@ -8,10 +8,8 @@ import com.example.newsapp.models.Article
 class NewsRepository(
     val db: ArticleDatabase
 ) {
-    suspend fun getBreakingNews(contryCode: String, pageNumber: Int) {
-        Log.d("API CALL", "URL ${RetrofitInstance.api}")
+    suspend fun getBreakingNews(contryCode: String, pageNumber: Int) =
         RetrofitInstance.api.getBreakingNews(contryCode, pageNumber)
-    }
 
     suspend fun searchNews(searchQuery: String, pageNumber: Int) =
         RetrofitInstance.api.searchForNews(searchQuery, pageNumber)
