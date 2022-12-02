@@ -29,6 +29,8 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
 
         newsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
+                Log.d("ARTICLE_WEB_SHOW SAVED", "NOT SHOWN ${it.source}")
+                Log.d("ARTICLE_WEB_SHOW SAVED", "NOT SHOWN ${it}")
                 putSerializable("article", it)
             }
             findNavController().navigate(
