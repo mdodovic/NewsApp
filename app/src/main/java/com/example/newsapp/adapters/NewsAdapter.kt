@@ -17,7 +17,6 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     inner class ArticleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>() {
-
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem.url == newItem.url
         }
@@ -56,8 +55,8 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
             val tvPublishedAt = findViewById<TextView>(R.id.tvPublishedAt)
             tvPublishedAt.text = article.publishedAt
 
-            setOnItemClickListener {
-                onItemCLickListener?.let { it(article) }
+            setOnClickListener {
+                onItemClickListener?.let { it(article) }
             }
         }
     }
@@ -66,10 +65,10 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         return differ.currentList.size
     }
 
-    private var onItemCLickListener : ((Article) -> Unit)? = null
+    private var onItemClickListener: ((Article) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Article) -> Unit) {
-        onItemCLickListener = listener
+        onItemClickListener = listener
     }
 
 }
